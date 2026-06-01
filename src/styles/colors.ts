@@ -1,0 +1,16 @@
+export const colors = {
+  main: "#6865e7",
+  white: "#ffffff",
+  black: "#212122",
+  partner: "#3d3d3d",
+  line: "#ececee",
+  gray1: "#f7f7f8",
+  gray2: "#dddddf",
+  gray4: "#A7A7AE",
+  gray5: "#8d8d96",
+  gray6: "#73737D",
+  gray7: "#5b5b62",
+  red: "#ef3a2f",
+  green: "#17aa4d",
+  blue: "#4483F8",
+};
