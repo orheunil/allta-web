@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { StoreList, StoreMap, StoreSearchInput } from "@/components/stores";
 import { GetStoreListForWebResponse, StoreListItem } from "@/types";
-import Image from "next/image";
 import { closeIcon } from "../../../public/images";
 
 interface Props {
