@@ -36,7 +36,7 @@ export const Screen = ({ data }: Props) => {
   }, [store]);
 
   return (
-    <div className="relative flex w-full h-[calc(100vh-72px)]">
+    <div className="relative flex w-full h-[calc(100vh-64px)]">
       {modal && (
         <div
           onClick={handleCloseModal}
@@ -44,7 +44,7 @@ export const Screen = ({ data }: Props) => {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="flex flex-col w-full max-w-[720px] mb-[72px] px-[24px] pt-[24px] pb-[40px] lg:pb-[60px] bg-white rounded-[12px] cursor-default"
+            className="flex flex-col w-full max-w-[720px] mb-[64px] px-[24px] pt-[24px] pb-[40px] lg:pb-[60px] bg-white rounded-[12px] cursor-default"
           >
             <button
               onClick={handleCloseModal}

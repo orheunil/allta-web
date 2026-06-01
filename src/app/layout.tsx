@@ -66,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className="h-full antialiased">
       <body
-        className={`flex min-h-dvh flex-col pt-[72px] ${pretendard.className} text-black text-[16px] leading-[1.4]`}
+        className={`flex min-h-dvh flex-col pt-[64px] ${pretendard.className} text-black text-[16px] leading-[1.4]`}
       >
         <Navigation />
 

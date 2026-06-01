@@ -1,13 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import QRCode from "qrcode-generator";
-import { navLogo, qrClose } from "../../../../public/images";
+import { useResizeHandler } from "@/hooks";
+import {
+  closeIcon,
+  hamburgerIcon,
+  navLogo,
+  qrClose,
+} from "../../../../public/images";
 
 export const Navigation = () => {
+  const { isDesktop } = useResizeHandler();
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [showQr, setShowQr] = useState<boolean>(false);
 
   const qr = QRCode(0, "H");
@@ -30,6 +39,12 @@ export const Navigation = () => {
 
     setShowQr(true);
   };
+
+  useEffect(() => {
+    if (!isDesktop) {
+      setIsOpen(false);
+    }
+  }, [isDesktop]);
 
   const qrModal =
     showQr && typeof document !== "undefined"
@@ -71,25 +86,73 @@ export const Navigation = () => {
       : null;
 
   return (
-    <header className="fixed flex justify-center items-center top-0 w-screen h-[72px] px-[32px] md:px-[80px] bg-white z-[2]">
+    <header className="fixed flex justify-center items-center top-0 w-screen h-[64px] px-[32px] md:px-[80px] bg-white z-[50]">
       {qrModal}
 
-      <nav className="flex justify-between items-center w-full">
-        <Image src={navLogo} alt="올타" className="w-[62px]" />
+      {isDesktop ? (
+        <nav className="flex justify-between items-center w-full">
+          <Image src={navLogo} alt="올타" className="w-[62px]" />
 
-        <div className="flex items-center gap-[40px] text-[16px] font-semibold">
-          <Link href="/">서비스</Link>
+          <div className="flex items-center gap-[40px] text-[16px] font-semibold">
+            <Link href="/">서비스</Link>
 
-          <Link href="/stores">세차장 찾기</Link>
+            <Link href="/stores">세차장 찾기</Link>
 
-          <button
-            onClick={handleRouteAppStore}
-            className="px-[12px] py-[8px] text-main text-[14px] border-[2px] border-main rounded-[8px] cursor-pointer"
-          >
-            앱 다운로드
+            <button
+              onClick={handleRouteAppStore}
+              className="px-[12px] py-[8px] text-main text-[14px] border-[2px] border-main rounded-[8px] cursor-pointer"
+            >
+              앱 다운로드
+            </button>
+          </div>
+        </nav>
+      ) : (
+        <nav className="flex justify-between items-center w-full">
+          <Image src={navLogo} alt="올타" className="w-[62px]" />
+
+          <button onClick={() => setIsOpen(!isOpen)}>
+            <Image src={hamburgerIcon} alt="메뉴" className="size-[28px]" />
           </button>
-        </div>
-      </nav>
+
+          <div
+            className={`fixed flex flex-col top-0 left-0 z-[60] w-screen ${isOpen ? "h-screen" : "h-0"} px-[32px] bg-white duration-500 overflow-hidden`}
+          >
+            <button
+              onClick={() => setIsOpen(false)}
+              className="self-end my-[18px]"
+            >
+              <Image src={closeIcon} alt="닫기" className="size-[28px]" />
+            </button>
+
+            <button
+              onClick={handleRouteAppStore}
+              className="w-full py-[14px] text-white text-[16px] font-medium bg-main rounded-[12px] cursor-pointer"
+            >
+              앱 다운로드
+            </button>
+
+            {/* <button className="w-full mt-[12px] py-[14px] text-[16px] font-medium bg-white border border-gray2 rounded-[12px] cursor-pointer">
+              로그인/회원가입
+            </button> */}
+
+            <Link
+              href="/"
+              onClick={() => setIsOpen(false)}
+              className="mt-[28px] py-[14px] text-[20px] font-semibold border-b border-line"
+            >
+              서비스
+            </Link>
+
+            <Link
+              href="/stores"
+              onClick={() => setIsOpen(false)}
+              className="py-[14px] text-[20px] font-semibold border-b border-line"
+            >
+              세차장 찾기
+            </Link>
+          </div>
+        </nav>
+      )}
     </header>
   );
 };
