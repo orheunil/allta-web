@@ -5,18 +5,22 @@ import Image from "next/image";
 import { StoreList, StoreMap, StoreSearchInput } from "@/components/stores";
 import { GetStoreListForWebResponse, StoreListItem } from "@/types";
 import { closeIcon } from "../../../public/images";
+import { useResizeHandler } from "@/hooks";
 
 interface Props {
   data: GetStoreListForWebResponse;
 }
 
 export const Screen = ({ data }: Props) => {
+  const { isDesktop } = useResizeHandler();
+
   const [coordinate, setCoordinate] = useState<{ lat: number; lng: number }>({
     lat: 37.5759785,
     lng: 127.1935115,
   });
   const [store, setStore] = useState<StoreListItem | null>(null);
   const [modal, setModal] = useState<StoreListItem | null>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleCloseModal = () => {
     setModal(null);
@@ -32,7 +36,7 @@ export const Screen = ({ data }: Props) => {
   }, [store]);
 
   return (
-    <div className="flex w-full h-[calc(100vh-72px)]">
+    <div className="relative flex w-full h-[calc(100vh-72px)]">
       {modal && (
         <div
           onClick={handleCloseModal}
@@ -103,12 +107,34 @@ export const Screen = ({ data }: Props) => {
         </div>
       )}
 
-      <div className="flex flex-col w-[380px] px-[28px] py-[24px]">
-        <h1 className="text-[24px] font-bold">세차장 찾기</h1>
+      {isDesktop ? (
+        <div className="flex flex-col w-[380px] px-[28px] py-[24px] bg-white">
+          <h1 className="text-[24px] font-bold">세차장 찾기</h1>
 
-        <StoreSearchInput />
-        <StoreList data={data.data} store={store} setStore={setStore} />
-      </div>
+          <StoreSearchInput />
+          <StoreList data={data.data} store={store} setStore={setStore} />
+        </div>
+      ) : (
+        <div
+          className={`absolute flex flex-col bottom-0 w-full ${isOpen ? "h-[50vh]" : "h-[154px]"} px-[24px] bg-white rounded-t-[24px] duration-500 z-[2]`}
+          style={{
+            boxShadow: "0 4px 10px 2px rgba(28, 28, 44, 0.2)",
+          }}
+        >
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex justify-center cursor-pointer "
+          >
+            <div className="w-[85px] h-[3px] mt-[10px] mb-[6px] bg-[#BFBFBF] rounded-[4px]" />
+          </button>
+
+          <h1 className="mt-[28px] text-[24px] font-bold">세차장 찾기</h1>
+
+          <StoreSearchInput />
+
+          <StoreList data={data.data} store={store} setStore={setStore} />
+        </div>
+      )}
 
       <div className="flex flex-1">
         <StoreMap
