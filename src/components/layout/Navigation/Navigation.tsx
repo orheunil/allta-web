@@ -91,7 +91,9 @@ export const Navigation = () => {
 
       {isDesktop ? (
         <nav className="flex justify-between items-center w-full">
-          <Image src={navLogo} alt="올타" className="w-[62px]" />
+          <Link href="/">
+            <Image src={navLogo} alt="올타" className="w-[62px]" />
+          </Link>
 
           <div className="flex items-center gap-[40px] text-[16px] font-semibold">
             <Link href="/">서비스</Link>
@@ -108,7 +110,9 @@ export const Navigation = () => {
         </nav>
       ) : (
         <nav className="flex justify-between items-center w-full">
-          <Image src={navLogo} alt="올타" className="w-[62px]" />
+          <Link href="/">
+            <Image src={navLogo} alt="올타" className="w-[62px]" />
+          </Link>
 
           <button onClick={() => setIsOpen(!isOpen)}>
             <Image src={hamburgerIcon} alt="메뉴" className="size-[28px]" />
