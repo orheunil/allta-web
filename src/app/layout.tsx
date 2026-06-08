@@ -12,43 +12,41 @@ const pretendard = localFont({
 
 export const metadata: Metadata = {
   title: "올타",
-  // description: "당신의 모빌리티 케어 파트너, 옳은일입니다",
+  description: "당신의 모빌리티 케어 파트너, 옳은일입니다",
   // alternates: {
   //   canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://allta.io",
   // },
-  // icons: {
-  //   icon: "/meta/favicon.png",
-  //   shortcut: "/meta/favicon.png",
-  //   apple: "/meta/icon-192.png",
-  //   other: [
-  //     { url: "/meta/icon-192.png", sizes: "192x192", type: "image/png" },
-  //     { url: "/meta/icon-512.png", sizes: "512x512", type: "image/png" },
-  //   ],
-  // },
-  // metadataBase: new URL(
-  //   process.env.NEXT_PUBLIC_SITE_URL || "https://allta.io",
-  // ),
-  // openGraph: {
-  //   title: "옳은일 | 모빌리티 케어 파트너",
-  //   description: "당신의 모빌리티 케어 파트너, 옳은일입니다",
-  //   images: "/images/og-image.png",
-  // },
-  // twitter: {
-  //   title: "옳은일 | 모빌리티 케어 파트너",
-  //   description: "당신의 모빌리티 케어 파트너, 옳은일입니다",
-  //   images: "/meta/og-image.png",
-  //   card: "summary_large_image",
-  // },
-  // keywords: [
-  //   "옳은일",
-  //   "orheunil",
-  //   "올타",
-  //   "allta",
-  //   "모빌리티 플랫폼",
-  //   "자동세차 구독",
-  //   "차량 관리 서비스",
-  //   "자동세차 플랫폼",
-  // ],
+  icons: {
+    icon: "/meta/favicon.png",
+    shortcut: "/meta/favicon.png",
+    apple: "/meta/icon-192.png",
+    other: [
+      { url: "/meta/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/meta/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+  },
+  // metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://allta.io"),
+  openGraph: {
+    title: "올타 | 올바른 자동세차의 시작",
+    description: "올바른 자동세차의 시작, 올타",
+    images: "/meta/og-image.png",
+  },
+  twitter: {
+    title: "올타 | 올바른 자동세차의 시작",
+    description: "올바른 자동세차의 시작, 올타",
+    images: "/meta/og-image.png",
+    card: "summary_large_image",
+  },
+  keywords: [
+    "옳은일",
+    "orheunil",
+    "올타",
+    "allta",
+    "모빌리티 플랫폼",
+    "자동세차 구독",
+    "차량 관리 서비스",
+    "자동세차 플랫폼",
+  ],
   // verification: {
   //   google: process.env.NEXT_PUBLIC_GOOGLE_SEARCH_VERIFICATION,
   // },

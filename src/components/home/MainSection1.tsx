@@ -3,7 +3,7 @@ import { HoverWrapper } from "../animation/Hover";
 export const MainSection1 = () => {
   return (
     <section className="flex flex-col items-center w-full h-full px-[20px] lg:px-[80px]">
-      <div className="flex flex-col w-full max-w-[375px] md:max-w-[736px] lg:max-w-[1080px] py-[240px]">
+      <div className="flex flex-col w-full max-w-[375px] md:max-w-[736px] lg:max-w-[1080px] pt-[240px]">
         <HoverWrapper
           display="flex"
           flexDirection="column"
