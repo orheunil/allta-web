@@ -5,7 +5,7 @@ import { app1, app2, app3 } from "../../../public/images";
 export const MainSection2 = () => {
   return (
     <section className="flex flex-col items-center w-full h-full px-[20px] lg:px-[80px] bg-back4">
-      <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-[1080px] py-[240px] gap-[48px] md:gap-[80px] lg:gap-[150px]">
+      <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-[375px] md:max-w-[736px] lg:max-w-[1080px] py-[240px] gap-[48px] md:gap-[80px] lg:gap-[150px]">
         <div className="flex flex-col self-start md:self-auto">
           <HoverWrapper distance={0} duration={1.25}>
             <p className="text-[28px] md:text-[40px] lg:text-[48px] font-bold">
@@ -36,7 +36,7 @@ export const MainSection2 = () => {
         </HoverWrapper>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-[1080px] py-[240px] gap-[48px] md:gap-[80px] lg:gap-[150px]">
+      <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-[375px] md:max-w-[736px] lg:max-w-[1080px] py-[240px] gap-[48px] md:gap-[80px] lg:gap-[150px]">
         <div className="flex flex-col self-start md:self-auto">
           <HoverWrapper distance={0} duration={1.25}>
             <p className="text-[28px] md:text-[40px] lg:text-[48px] font-bold">
@@ -67,7 +67,7 @@ export const MainSection2 = () => {
         </HoverWrapper>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-[1080px] py-[240px] gap-[48px] md:gap-[80px] lg:gap-[150px]">
+      <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-[375px] md:max-w-[736px] lg:max-w-[1080px] py-[240px] gap-[48px] md:gap-[80px] lg:gap-[150px]">
         <div className="flex flex-col self-start md:self-auto">
           <HoverWrapper distance={0} duration={1.25}>
             <p className="text-[28px] md:text-[40px] lg:text-[48px] font-bold">
