@@ -13,9 +13,9 @@ const pretendard = localFont({
 export const metadata: Metadata = {
   title: "올타",
   description: "당신의 모빌리티 케어 파트너, 옳은일입니다",
-  // alternates: {
-  //   canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://allta.io",
-  // },
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://allta.io",
+  },
   icons: {
     icon: "/meta/favicon.png",
     shortcut: "/meta/favicon.png",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
       { url: "/meta/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
   },
-  // metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://allta.io"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://allta.io"),
   openGraph: {
     title: "올타 | 올바른 자동세차의 시작",
     description: "올바른 자동세차의 시작, 올타",
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
     "차량 관리 서비스",
     "자동세차 플랫폼",
   ],
-  // verification: {
-  //   google: process.env.NEXT_PUBLIC_GOOGLE_SEARCH_VERIFICATION,
-  // },
-  // other: {
-  //   "naver-site-verification":
-  //     process.env.NEXT_PUBLIC_NAVER_SEARCH_VERIFICATION ?? "",
-  // },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SEARCH_VERIFICATION,
+  },
+  other: {
+    "naver-site-verification":
+      process.env.NEXT_PUBLIC_NAVER_SEARCH_VERIFICATION ?? "",
+  },
 };
 
 export default function RootLayout({
