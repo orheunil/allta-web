@@ -23,7 +23,7 @@ interface Props {
 export const HoverWrapper = ({
   distance = 100,
   delay = 0,
-  threshold = 0.9,
+  threshold = 0.4,
   duration = 1,
   direction = "UP",
   display,
@@ -38,31 +38,48 @@ export const HoverWrapper = ({
 
   const elRef = useRef<HTMLDivElement | null>(null);
 
-  const transformMap = {
-    UP: `translateY(${distance}px)`,
-    DOWN: `translateY(-${distance}px)`,
-    LEFT: `translateX(${distance}px)`,
-    RIGHT: `translateX(-${distance}px)`,
+  const positionMap = {
+    UP: { x: 0, y: distance },
+    DOWN: { x: 0, y: -distance },
+    LEFT: { x: distance, y: 0 },
+    RIGHT: { x: -distance, y: 0 },
   };
 
-  const transform = transformMap[direction];
+  const initialPosition = positionMap[direction];
 
   useGSAP(
     () => {
       if (!elRef.current) return;
 
-      if (isIntersecting) {
-        gsap.to(elRef.current, {
+      if (!isIntersecting) {
+        gsap.set(elRef.current, {
+          ...initialPosition,
+          opacity: 0,
+        });
+        return;
+      }
+
+      gsap.fromTo(
+        elRef.current,
+        {
+          ...initialPosition,
+          opacity: 0,
+        },
+        {
           x: 0,
           y: 0,
           opacity: 1,
           duration,
           ease: "power3.out",
           delay,
-        });
-      }
+          overwrite: "auto",
+        },
+      );
     },
-    { dependencies: [isIntersecting] },
+    {
+      dependencies: [delay, direction, distance, duration, isIntersecting],
+      revertOnUpdate: true,
+    },
   );
 
   return (
@@ -80,7 +97,7 @@ export const HoverWrapper = ({
           flexDirection,
           justifyContent,
           alignItems,
-          transform,
+          width,
           opacity: 0,
         }}
       >

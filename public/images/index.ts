@@ -17,3 +17,6 @@ export { default as app2 } from "./app-2.png";
 export { default as app3 } from "./app-3.png";
 export { default as wash1 } from "./wash-1.png";
 export { default as wash2 } from "./wash-2.png";
+export { default as instaIcon } from "./insta-icon.png";
+export { default as youtubeIcon } from "./youtube-icon.png";
+export { default as blogIcon } from "./blog-icon.png";

@@ -5,6 +5,7 @@ import {
   MainSection3,
   MainSection4,
 } from "@/components/home";
+import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <MainSection2 />
       <MainSection3 />
       <MainSection4 />
+
+      <Footer />
     </div>
   );
 }
