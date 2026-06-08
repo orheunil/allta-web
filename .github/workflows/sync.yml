@@ -1,0 +1,34 @@
+name: Sync Private Upstream
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout personal repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "orheunil"
+          git config --global user.email "orheunil@orheun.com"
+      - name: Sync upstream
+        run: |
+          git remote remove upstream || true
+          git remote add upstream https://${{ secrets.GH_PAT }}@github.com/Orheunil-Dev/allta-web.git
+          git fetch upstream
+          git checkout master
+          git merge upstream/master --no-edit
+          git push origin master
